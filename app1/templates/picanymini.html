@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+pic any mini
+{% endblock title %}
+
+{% block content %}
+<div class="main_pic_any">
+    <h1 class="head">Pic Any Mini</h1>
+    <div id="pic_sides">
+        <div class="main_pic">
+            {% for i in anymini %}
+            <div class="pic_product">
+                <a href="{% url 'product_detail' i.id  %}">
+                {% if i.image %}
+                <img class="pic_photo" src="{{ i.image.url }}" alt="">
+                <p class="pic_p">{{ i.name }} ({{ i.ML }}ML)</p>
+                {% endif %}
+                </a>
+                <a href="{% url 'cart' i.id %}"><button class="addto">Add to cart</button></a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

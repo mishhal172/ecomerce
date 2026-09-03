@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/sign.css' %}">
+<title>Signup</title>
+
+
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>Sign Up</h2>
+
+<form method="POST">
+{% csrf_token %}
+
+<label>Username</label>
+{{ form.username }}
+
+<label>Password</label>
+{{ form.password1 }}
+
+<label>Confirm Password</label>
+{{ form.password2 }}
+
+<button type="submit">Sign Up</button>
+
+</form>
+
+<p>Already have account?
+<a href="{% url 'login' %}">Login</a>
+</p>
+
+</div>
+
+</body>
+</html>

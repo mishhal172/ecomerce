@@ -1,0 +1,155 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #a47764;
+    box-shadow: 0 0 4px rgba(164, 119, 100, 0.4);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #a47764;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #8a5f4e;
+}
+
+a {
+    text-decoration: none;
+    color: #a47764;
+    font-size: 14px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        width: 90%;
+        max-width: 450px;
+        padding: 30px;
+    }
+
+    input {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 15px;
+    }
+}
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+        align-items: center;
+    }
+
+    .container {
+        width: 95%;
+        max-width: 420px;
+        padding: 25px;
+        border-radius: 10px;
+    }
+
+    input {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 15px;
+    }
+}
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        max-width: 380px;
+        padding: 22px;
+    }
+
+    input {
+        font-size: 13px;
+        padding: 11px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 11px;
+    }
+}
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+        align-items: flex-start;
+    }
+
+    .container {
+        width: 100%;
+        padding: 18px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    input {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+@media (max-width: 360px) {
+    .container {
+        padding: 15px;
+    }
+
+    input {
+        font-size: 12px;
+        padding: 9px;
+    }
+
+    button {
+        font-size: 13px;
+        padding: 9px;
+    }
+}

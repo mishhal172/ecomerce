@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Cart page
+{% endblock title %}
+{% block content %}
+{% if items %}
+<div class="cart-page">
+    <div id="add-to-cart">
+        <div class="full-cart">
+            {% for item in items %}
+            <div class="product-single">
+                <div class="cart-section">
+                    <div class="leftcart">
+                        <img src="{{ item.product.image.url }}" alt="">
+                        <p>Quantity: {{ item.quantity }}</p>
+                        <a class="pluse-mines" href="{%  url 'decrease_quantity' item.product.id %}">-</a>
+                        <a class="pluse-mines" href="{% url 'increase_quantity' item.product.id %}">+</a>
+                    </div>
+                    <div class="right">
+                        <h2>{{ item.product.name }}</h2>
+                        <div class="prices">
+                            <del>{{ item.product.price }} </del>
+                            <strong>{{ item.product.dprice}}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-cart">
+                    {% if item.id %}
+                    <a class="remove-cart"
+                        href="{% url 'remove_from_cart' item.product.id %}"><button>Remove</button></a>
+                    {% endif %}
+                    <a class="buy-cart" href="{% url 'product_detail' item.product.id %}"><button>Buy this
+                            now</button></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="right-cart">
+        <div class="full-box">
+            <div class="main-box">
+                <div class="mrp">
+                    <h6>MRP</h6>
+                    <p>{{ mrp }}</p>
+                </div>
+                <div class="fees">
+                    <h6>Fees</h6>
+                    <p>{{ fee }}</p>
+                </div>
+                <div class="discount">
+                    <h6>Discount</h6>
+                    <p>{{ dis }}</p>
+                </div>
+                <div class="total-amount">
+                    <h6>Total Amount</h6>
+                    <p>{{ total }}</p>
+                </div>
+            </div>
+            <div class="you-saved">youll saved {{ save }} on this order </div>
+        </div>
+
+        <div class="placing-order">
+            <div class="mrp-dis">
+                <p1>{{ dis }}</p1>
+                <p>{{ total }}</p>
+            </div>
+            <a href="{% url 'checkout' %}"><button>Place Order</button></a>
+        </div>
+    </div>
+
+</div>
+{% else %}
+<div class="empty-cart">
+    <h2>Your cart is empty</h2>
+</div>
+{% endif %}
+{% endblock content %}

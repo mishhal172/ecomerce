@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}
+profile
+{% endblock title %}
+
+{% block content %}
+<form class="profile-form" action="{% url 'profile_form' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="profile">
+        <label class="circle">
+            <input type="file" name="profile" value="{{ ob.profile_picture }}">
+            {% if ob.profile_picture %}
+            <img class="img-profile" src="{{ ob.profile_picture.url }}" width="100">
+            {% endif %}
+        </label>
+        <span>Change profile</span>
+    </div>
+
+    <div class="usernames">
+        <label for="">First_name :</label>
+        <input type="text" name="username" value="{{ ob.user }}">
+    </div>
+    <div class="usernames">
+        <label for="">Last_name :</label>
+        <input type="text" name="last_name" value="{{ ob.last_name }}">
+    </div>
+    <div class="email">
+        <label for="">Email :</label>
+        <input type="email" name="email" value="{{ ob.Email }}">
+    </div>
+    <div class="phone">
+        <label for="">Phone :</label>
+        <input type="number" name="phone" value="{{ ob.phone_number }}">
+    </div>
+    <div class="state">
+        <label for="">State :</label>
+        <select name="state" id="">
+            <option value="kerala">kerala</option>
+        </select>
+    </div>
+    <div class="District">
+        <label for="">Country :</label>
+        <select name="country" id="">
+            <option value="india">India</option>
+        </select>
+    </div>
+    <div class="pincode">
+        <label for="">Pincode :</label>
+        <input type="number" name="pincode" value="{{ ob.pincode }}">
+    </div>
+    <div class="location">
+        <label for="">Location :</label>
+        <input type="text" name="location" value="{{ ob.location }}">
+    </div>
+    <button type="submit" class="profile-submited">Save profile</button>
+</form>
+{% endblock content %}

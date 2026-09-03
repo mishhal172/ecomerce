@@ -1,0 +1,206 @@
+.checkout-container {
+    box-sizing: border-box;
+    margin: auto;
+    margin-top: 160px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 50px;
+    background: #f5f5f5;
+}
+
+.billing-box {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 50%;
+}
+
+.billing-box h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.billing-box label {
+    display: block;
+    margin: 12px 0 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.billing-box label span {
+    color: red;
+}
+
+.billing-box input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #fafafa;
+    transition: 0.3s;
+}
+
+.billing-box input::placeholder {
+    color: #aaa;
+}
+
+.billing-box select {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #fafafa;
+    transition: 0.3s;
+    padding: 12px;
+}
+
+.billing-box input:focus {
+    outline: none;
+    border-color: #333;
+    background: #fff;
+}
+
+.row {
+    display: flex;
+    gap: 15px;
+}
+
+.field {
+    flex: 1;
+}
+
+.order-section {
+    width: 40%;
+}
+
+.order-section h2 {
+    margin-bottom: 15px;
+}
+
+.order-box {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.order-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 14px;
+}
+
+.order-rows {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.order-rows strong {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.total {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.payment {
+    margin-top: 15px;
+}
+
+.payment label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.place-order {
+    width: 100%;
+    padding: 14px;
+    font-weight: 600;
+    font-size: larger;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.place-order:hover {
+    background: #333;
+}
+
+@media (max-width: 1024px) {
+    .checkout-container {
+        flex-direction: column;
+        padding: 30px;
+    }
+    .billing-box,
+    .order-section {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .checkout-container {
+        padding: 20px;
+        gap: 20px;
+        flex-direction: column;
+    }
+    .form-check{
+        display:flex;
+        flex-direction:column;
+    }
+    .billing-box {
+        padding: 20px;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .order-box {
+        padding: 15px;
+    }
+
+    .order-row,
+    .order-rows {
+        font-size: 13px;
+    }
+
+    .place-order {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .checkout-container {
+        padding: 15px;
+    }
+
+    .billing-box h2,
+    .order-section h2 {
+        font-size: 18px;
+    }
+
+    .billing-box input,
+    .billing-box select {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .place-order {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,92 @@
+.about-page-section{
+    width: 100%;
+    margin-top: 100px;
+    min-height: 100vh;
+    background-color: #f8f5f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    box-sizing: border-box;
+}
+
+.about-page-container{
+    width: 100%;
+    max-width: 1000px;
+}
+
+.about-page-content-wrapper{
+    background-color: #ffffff;
+    padding: 60px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.08);
+}
+
+.about-page-main-heading{
+    font-size: 48px;
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 15px;
+    font-family: sans-serif;
+}
+
+.about-page-sub-heading{
+    font-size: 24px;
+    font-weight: 600;
+    color: #c46b48;
+    margin-bottom: 30px;
+    font-family: sans-serif;
+}
+
+.about-page-description-text{
+    font-size: 18px;
+    line-height: 1.9;
+    color: #555555;
+    margin-bottom: 40px;
+    font-family: sans-serif;
+}
+
+.about-page-founder-details{
+    border-top: 1px solid #e0e0e0;
+    padding-top: 20px;
+}
+
+.about-page-founder-name{
+    font-size: 22px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 5px;
+    font-family: sans-serif;
+}
+
+.about-page-founder-position{
+    font-size: 16px;
+    color: #777777;
+    font-family: sans-serif;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 768px){
+
+    .about-page-content-wrapper{
+        padding: 35px 25px;
+    }
+
+    .about-page-main-heading{
+        font-size: 36px;
+    }
+
+    .about-page-sub-heading{
+        font-size: 20px;
+    }
+
+    .about-page-description-text{
+        font-size: 16px;
+    }
+
+    .about-page-founder-name{
+        font-size: 20px;
+    }
+
+}

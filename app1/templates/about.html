@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Fruity
+{% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+
+<section class="about-page-section">
+    
+    <div class="about-page-container">
+
+        <div class="about-page-content-wrapper">
+
+            <h1 class="about-page-main-heading">
+                About Us
+            </h1>
+
+            <h5 class="about-page-sub-heading">
+                "The Perfume Project"
+            </h5>
+
+            <p class="about-page-description-text">
+                At The Perfume Project, we believe that scent is more than just fragrance — it’s memory, identity, and emotion bottled into an experience. Founded with the vision to redefine how the world relates to perfume, we set out to create scents that are expressive, gender-neutral, and unapologetically individual.
+            </p>
+
+            <div class="about-page-founder-details">
+                
+                <p class="about-page-founder-name">
+                    Shruthi Rajanikanth
+                </p>
+
+                <p class="about-page-founder-position">
+                    Founder at Perfume Project
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock content %}

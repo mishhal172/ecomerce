@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="orders-container">
+
+    {% for order in orders %}
+
+    <div class="order-box">
+
+        <h3>Order #{{ order.id }}</h3>
+
+        {% for item in order.orderitem_set.all %}
+
+        <a href="{% url 'product_detail' item.product.id %}" class="item-row">
+            <div class="left-side-buy">
+                <img src="{{ item.product.image.url }}" class="product-img">
+
+                <div>
+                    <p>{{ item.product.name }}</p>
+                    <p>Qty: {{ item.quantity }}</p>
+                </div>
+            </div>
+            <div class="right_side-buy"><p>{{ item.product.dprice }}</p></div>
+        </a>
+        {% endfor %}
+        <p>Including 10 rupees of application fee</p>
+        <p><b>Total:</b> ₹{{ order.total_amount }}</p>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+from django.urls import path
+from .import views
+
+urlpatterns = [
+    
+    path('',views.minis,name='first'),
+    path('minipage/',views.minipage,name='minipage'),
+    path('newpage/',views.newarrivals,name='newarrivals'),
+    path('bestpage/',views.bestselling,name='bestsell'),
+    path('sweet/',views.sweet,name='sweet'),
+    path('woody/',views.woody,name='woody'),
+    path('floral/',views.floral,name='floral'),
+    path('citric/',views.citric,name='citric'),
+    path('fruity/',views.fruity,name='fruity'),
+    path('musk/',views.musk,name='musk'),
+    path('picany/',views.anymini,name='pic'),
+    path('product/<int:id>/', views.product_detail, name='product_detail'),
+    path('login/',views.user_login,name='login'),
+    path('register/',views.userregister,name='Register'),
+    path('cart/<int:id>/',views.cart,name='cart'),
+    path('addtocart/',views.addtocart,name='cart_page'),
+    path('remove-from-cart/<int:product_id>/', views.remove_from_cart, name='remove_from_cart'),
+    path('shopall/',views.shopall,name='shopall'),
+    path('profiles/',views.profile_form,name='profile_form'),
+    path('profile/',views.profile,name='profile'),
+    path('logout/', views.user_logout, name='logout'),
+    path('search/', views.search, name='search'),
+    path('thankyou/',views.thankyou,name='thankyou'),
+    path('checkout/', views.checkout, name='checkout'),
+    path('orders/', views.order_list, name='order_list'),
+    path('wishlist/', views.wish_list, name='wishlist_page'),
+    path('add-wishlist/<int:id>/', views.wish_add, name='add_wishlist'),
+    path('remove-wishlist/<int:id>/', views.delete_wish, name='remove_wishlist'),
+    path('privacy/',views.privacy,name='privacy'),
+    path('cart/increase/<int:product_id>/', views.increase_quantity, name='increase_quantity'),
+    path('cart/decrease/<int:product_id>/', views.decrease_quantity, name='decrease_quantity'),
+    path('about/',views.about,name='about'),
+]

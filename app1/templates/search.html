@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+search
+{% endblock title %}
+
+{% block content %}
+<div class="search-product">
+    {% if product %}
+    <h2 class="search-product-head">Products</h2>
+    {% for i in product %}
+    <a href="{% url 'product_detail' i.id %}">
+        <div class="search-result">
+            <div class="search-left">
+                {% if i.image %}
+                <img src="{{ i.image.url }}">
+                {% endif %}
+            </div>
+            <div class="search-right">
+                <p>{{ i.name }}</p>
+                <div class="prices">
+                    <p>{{ i.price }}</p>
+                    <p>{{ i.dprice }}</p>
+                </div>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>Products not Found</p>
+    {% endif %}
+</div>
+</div>
+{% endblock content %}

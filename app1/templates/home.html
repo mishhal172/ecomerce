@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block content %}
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'image/perfume project.webp' %}" class="d-block" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'image/banner-3.webp' %}" class="d-block" alt="...">
+        </div>
+    </div>
+</div>
+<div id="carouselExampleIndicatorss" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'image/banner-perfumeproject.webp' %}" class="d-block" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'image/banner-2.webp' %}" class="d-block" alt="...">
+        </div>
+    </div>
+</div>
+<div class="miniature">
+    <h1 class="head">Mini Combos</h1>
+    <div class="minihead">
+        {% for i in mini %}
+        <div class="miniproduct">
+            <a href="{% url 'product_detail' i.id %}">
+                {% if i.image %}
+                <img class="miniphoto" src="{{ i.image.url }}" alt="">
+
+                <p class="minip">{{ i.name }}</p>
+                <p class="miniprice">
+                    <del class="price">RS.{{ i.price }}</del>
+                    <strong class="dprice">RS.{{ i.dprice }}</strong>
+                </p>
+                {% endif %}
+            </a>
+            <a href="{% url 'cart' i.id %}"><button class="addto">Add to cart</button></a>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'minipage' %}"><button class="shopall">Shop All Mini Combos</button></a>
+</div>
+
+
+<div class="miniature">
+    <h1 class="head">New Arrivals</h1>
+    <div class="minihead">
+        {% for i in newarrivals %}
+        <div class="miniproduct">
+            <a href="{% url 'product_detail' i.id %}">
+                {% if i.image %}
+                <img class="miniphoto" src="{{ i.image.url }}" alt="">
+
+                <p class="minip">{{ i.name }}</p>
+                <p class="miniprice">
+                    <del class="price">RS.{{ i.price }}</del>
+                    <strong class="dprice">RS.{{ i.dprice }}</strong>
+                </p>
+                {% endif %}
+            </a>
+            <a href="{% url 'cart' i.id %}"><button class="addto">Add to cart</button></a>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'newarrivals' %}"><button class="shopall">Shop All New Arrivals</button></a>
+</div>
+
+<div class="miniature">
+    <h1 class="head">Best Sellers</h1>
+    <div class="minihead">
+        {% for i in best %}
+        <div class="miniproduct">
+            <a href="{% url 'product_detail' i.id %}">
+                {% if i.image %}
+                <img class="miniphoto" src="{{ i.image.url }}" alt="">
+
+                <p class="minip">{{ i.name }}</p>
+                <p class="miniprice">
+                    <del class="price">RS.{{ i.price }}</del>
+                    <strong class="dprice">RS.{{ i.dprice }}</strong>
+                </p>
+                {% endif %}
+            </a>
+            <a href="{% url 'cart' i.id %}"><button class="addto">Add to cart</button></a>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'bestsell' %}"><button class="shopall">Shop All Best Sellers</button></a>
+</div>
+
+<div id="shopbynote">
+    <h1 class="head">Shop By Notes</h1>
+    <div id="flower">
+        <a href="{% url 'sweet' %}"><img src="{% static 'image/flower1.avif' %}" alt="">Sweet</a>
+        <a href="{% url 'woody' %}"><img src="{% static 'image/flower2.avif' %}" alt="">Woody</a>
+        <a href="{% url 'floral' %}"><img src="{% static 'image/flower3.avif' %}" alt="">Floral</a>
+        <a href="{% url 'citric' %}"><img src="{% static 'image/flower4.avif' %}" alt="">Citric</a>
+        <a href="{% url 'fruity' %}"><img src="{% static 'image/flower5.avif' %}" alt="">Fruity</a>
+        <a href="{% url 'musk' %}"><img src="{% static 'image/flower6.avif' %}" alt="">Musk</a>
+    </div>
+</div>
+<div id="community">
+    <h1 class="head">Community Stories</h1>
+    <div id="vid">
+        {% for b in videos %}
+        <div class="videos">
+            <video class="video" autoplay loop muted playsinline>
+                {% if b.video %}
+                <source src="{{ b.video.url }}" type="video/mp4">
+            </video>
+            <button class="mute-btn">🔇</button>
+            <a class="product-info" href="{% url 'product_detail' b.id  %}">
+                <div><img src="{{ b.image.url }}" alt=""></div>
+                <div class="product-title">
+                    <h6>{{ b.name }}</h6><strong>RS. {{ b.price }}</strong>
+                </div>
+            </a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <script>
+        document.querySelectorAll(".videos").forEach(container => {
+            const video = container.querySelector(".video");
+            const button = container.querySelector(".mute-btn");
+
+            button.addEventListener("click", () => {
+                video.muted = !video.muted;
+
+                button.textContent = video.muted ? "🔇" : "🔊";
+            });
+        });
+    </script>
+</div>
+<h1 class="head">FAQs</h1>
+<div id="faqs">
+    <div class="faq">
+        <p>Are you perfumes unisex?</p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+        </svg>
+    </div>
+    <p class="faq_p">Yes. All our fragrances are designed to be gender-neutral — made for skin, not stereotypes.</p>
+    <div class="faq">
+        <p>How long do the perfumes last?</p> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+        </svg>
+    </div>
+    <p class="faq_p">Our perfumes are formulated to last 6–8 hours depending on your skin type, weather, and activity.
+        They're designed to evolve as you wear them.</p>
+    <div class="faq">
+        <p>Are you product vagan and cruelty-free?</p> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+        </svg>
+    </div>
+    <p class="faq_p">Absolutely. We don’t test on animals, and none of our ingredients are derived from animals.</p>
+    <div class="faq">
+        <p>Do you ship across india?</p> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+        </svg>
+    </div>
+    <p class="faq_p">Yes, we ship pan-India. Free shipping on all orders above rupees 498.</p>
+    <div class="faq">
+        <p>What's your return or exchange policy? </p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+        </svg>
+    </div>
+    <p class="faq_p">Due to the nature of our product, we don’t accept returns. However, if your item is damaged during
+        transit, reach out within 48 hours and we’ll make it right.</p>
+</div>
+
+<div id="custumersupport">
+    <div class="support"><img src="{% static 'image/support1.webp' %}" alt="">
+        <h5>Fast Delivery</h5>
+        <p>Products delivered quickly, within 4-7 days.</p>
+    </div>
+    <div class="support"><img src="{% static 'image/support2.webp' %}" alt="">
+        <h5>Secure Payment</h5>
+        <p>Rest assured, all transactions are processed securely.</p>
+    </div>
+    <div class="support"><img src="{% static 'image/support3.webp' %}" alt="">
+        <h5>24/7 Customer Support</h5>
+        <p>Our dedicated support team is always here to assist you.</p>
+    </div>
+</div>
+{% endblock content %}

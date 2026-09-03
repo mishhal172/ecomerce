@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Musk
+{% endblock title %}
+
+{% block content %}
+<div class="miniaturepage">
+    <h1 class="head">Sweet</h1>
+    <div class="minifull">
+        {% for i in musk %}
+        <div class="miniproduct">
+            <a href="{% url 'product_detail' i.id  %}">
+                {% if i.image %}
+                <img class="miniphoto" src="{{ i.image.url }}" alt="">
+                <p class="minip">{{ i.name }}</p>
+                <p class="miniprice">
+                    <del class="price">RS.{{ i.price }}</del>
+                    <strong class="dprice">RS.{{ i.dprice }}</strong>
+                </p>
+                {% endif %}
+            </a>
+            <a href="{% url 'cart' i.id %}"><button class="addto">Add to cart</button></a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

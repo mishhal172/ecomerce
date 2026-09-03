@@ -1,0 +1,466 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/picany.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Register.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    <link rel="stylesheet" href="{% static 'css/order.css' %}">
+    <link rel="stylesheet" href="{% static 'css/wish.css' %}">
+
+
+    {% block page_css %}{% endblock %}
+    <meta id="viewport" name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2, viewport-fit=cover">
+</head>
+
+<body>
+    <div id="top">
+    </div>
+    <div class="navigation">
+        <div id="mainnavi">
+            <div id="left-list"><button onclick="visible()"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                        height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                    </svg></button>
+            </div>
+            <div id="navleft">
+                <img src="{% static 'image/PERFUME-PROJECT-2.avif' %}" alt="">
+            </div>
+            <div id="navcenter">
+                <a id="home" href="{% url 'first' %}">Home</a>
+
+                <a id="mini" onclick="minicombos()" href="#">Mini Combos <svg xmlns="http://www.w3.org/2000/svg"
+                        width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                    </svg>
+                </a>
+                <div class="dropdown">
+                    <a id="shop" href="#" onclick="shopalls()">
+                        Shop All
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 
+                     3.204 4h9.592a1 1 0 0 1 .753 
+                     1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                        </svg>
+                    </a>
+
+                    <div id="shopalls">
+
+                        <a href="{% url 'newarrivals' %}" class="three_in_one">
+                            <img src="{% static 'image/perfume10.webp' %}" alt="New Launches">
+                            <div class="title_three">
+                                <h3>New Launches</h3>
+                                <p>Shop Now</p>
+                            </div>
+                        </a>
+
+                        <a href="{% url 'bestsell' %}" class="three_in_one">
+                            <img src="{% static 'image/perfume1.webp' %}" alt="Best Sellers">
+                            <div class="title_three">
+                                <h3>Best Sellers</h3>
+                                <p>Shop Now</p>
+                            </div>
+                        </a>
+
+                        <a href="{% url 'shopall' %}" class="three_in_one">
+                            <img src="{% static 'image/perfume11.webp' %}" alt="Shop All">
+                            <div class="title_three">
+                                <h3>Shop All</h3>
+                                <p>Shop Now</p>
+                            </div>
+                        </a>
+
+
+                    </div>
+                </div>
+                <script>
+                    var isOpen = false;
+
+                    function shopalls() {
+                        var shopall = document.getElementById('shopalls')
+                        var total = document.getElementById('total')
+                        var minis = document.getElementById("mainmini")
+
+                        if (!isOpen) {
+                            shopall.style.display = "block"
+                            total.style.filter = "blur(5px)"
+                            total.style.transition = "1.3s"
+                            minis.style.display = "none"
+                            isOpen = true
+                        }
+                        else {
+                            shopall.style.display = "none"
+                            total.style.filter = "blur(0px)"
+                            isOpen = false
+                        }
+                    }
+                </script>
+                <a id="pic" href="{% url 'pic' %}">Pic Any Mini</a>
+            </div>
+            <div id="navright">
+                <div id="svgright">
+                    <a id="sign" href="{% url 'profile' %}"><svg xmlns="http://www.w3.org/2000/svg" width="23"
+                            height="23" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                            <path
+                                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                        </svg></a>
+                    <button class="svgfull" onclick="search()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                        </svg>
+                    </button>
+                    <a class="svgfull" href="{% url 'wishlist_page' %}"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="20" height="20" class="svg-icon-heart " viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+
+                            <path
+                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                            </path>
+
+                        </svg></a>
+                    <a class="svgfull" href="{% url 'cart_page' %}"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                            height="20" class="svg-icon-cart " viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+
+
+                            <circle cx="10" cy="20.5" r="1"></circle>
+                            <circle cx="18" cy="20.5" r="1"></circle>
+                            <path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"></path>
+                        </svg></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="left-slide">
+        <div>
+            <a href="{% url 'first' %}">Home</a>
+        </div>
+        <div class="menu-item">
+            <a href="">
+                minicombos
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                </svg>
+            </a>
+
+            <div class="left-slide-shop">
+                {% for i in minicombo %}
+                <a class="minidivs" href="{% url 'product_detail' i.id %}">
+                    <img src="{{ i.image.url }}" alt="">
+
+                    <div class="minidiv-titles">
+                        <h6>{{ i.genter }}</h6>
+                    </div>
+                </a>
+                {% endfor %}
+
+            </div>
+        </div>
+        <div class="menu-item">
+            <a href="">
+                Shopall
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                </svg>
+            </a>
+            <div class="left-slide-shop">
+                <a href="{% url 'newarrivals' %}" class="shop-items">
+                    <img src="{% static 'image/perfume10.webp' %}" alt="">
+                    <div>
+                        <h3>New Launches</h3>
+                    </div>
+                </a>
+
+                <a href="{% url 'bestsell' %}" class="shop-items">
+                    <img src="{% static 'image/perfume1.webp' %}" alt="">
+                    <div>
+                        <h3>Best Sellers</h3>
+                    </div>
+                </a>
+
+                <a href="{% url 'shopall' %}" class="shop-items">
+                    <img src="{% static 'image/perfume11.webp' %}" alt="">
+                    <div>
+                        <h3>Shop All</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div><a href="{% url 'pic' %}">Pic any mini</a></div>
+        <script>
+            let isOns = false;
+
+            let button = document.getElementById('left-list');
+            let slide = document.getElementById('left-slide');
+
+            function visible() {
+                isOns = !isOns
+
+                if (isOns) {
+                    slide.style.display = "flex";
+                } else {
+                    slide.style.display = "none";
+                }
+            }
+        </script>
+    </div>
+    <div id="mainmini">
+        <div id="minicombo">
+            {% for i in minicombo %}
+            <a class="minidiv" href="{% url 'product_detail' i.id  %}">
+                <div class="minidiv"><img src="{{ i.image.url }}" alt="">
+                    <div class="minidiv-title">
+                        <h6>{{ i.genter }}</h6>
+                        <p>Shop Now</p>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    <form method="GET" action="{% url 'search' %}" id="search-aria">
+        <input type="text" name="q" placeholder="Search our store..." value="{{ query|default:'' }}">
+        <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-search" viewBox="0 0 16 16">
+                <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg></button>
+    </form>
+
+    <div class="botton-control">
+        <a href="{% url 'first' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                <path
+                    d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
+            </svg>
+            <p>Home</p>
+        </a>
+        <a id="sign" href="{% url 'profile' %}"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
+                fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                <path
+                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+            </svg>
+            <p>Account</p>
+        </a>
+        <a href="{% url 'shopall' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-shop-window" viewBox="0 0 16 16">
+                <path
+                    d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.37 2.37 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0M1.5 8.5A.5.5 0 0 1 2 9v6h12V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5m2 .5a.5.5 0 0 1 .5.5V13h8V9.5a.5.5 0 0 1 1 0V13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5a.5.5 0 0 1 .5-.5" />
+            </svg>
+            <p>Shop</p>
+        </a>
+        <button class="" onclick="search()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                viewBox="0 0 16 16">
+                <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg>
+            <p>Search</p>
+        </button>
+        <a class="" href="{% url 'cart_page' %}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                class="svg-icon-cart " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+
+
+                <circle cx="10" cy="20.5" r="1"></circle>
+                <circle cx="18" cy="20.5" r="1"></circle>
+                <path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"></path>
+            </svg>
+            <p>Cart</p>
+        </a>
+    </div>
+    <script>
+        var isOpen = false;
+
+        function search() {
+            var shopall = document.getElementById('shopalls')
+            var total = document.getElementById('total')
+            var minis = document.getElementById("mainmini")
+            var searchs = document.getElementById('search-aria')
+
+            if (!isOpen) {
+                shopall.style.display = "none"
+                searchs.style.display = "flex"
+                total.style.transition = "1.3s"
+                minis.style.display = "none"
+                isOpen = true
+            }
+            else {
+                searchs.style.display = "none"
+                isOpen = false
+            }
+        }
+    </script>
+    <div id="total">
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+    <div id="last">
+        <div id="flast">
+            <div id="fl">
+                <img id="fllogo" src="{% static 'image/PERFUME-PROJECT-2.avif' %}" alt="">
+                <div id="socialmedia">
+                    <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                            class="icon-social-facebook" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07">
+                            </path>
+                        </svg></a>
+                    <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                            class="icon-social-instagram" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M16.98 0a6.9 6.9 0 0 1 5.08 1.98A6.94 6.94 0 0 1 24 7.02v9.96c0 2.08-.68 3.87-1.98 5.13A7.14 7.14 0 0 1 16.94 24H7.06a7.06 7.06 0 0 1-5.03-1.89A6.96 6.96 0 0 1 0 16.94V7.02C0 2.8 2.8 0 7.02 0h9.96zm.05 2.23H7.06c-1.45 0-2.7.43-3.53 1.25a4.82 4.82 0 0 0-1.3 3.54v9.92c0 1.5.43 2.7 1.3 3.58a5 5 0 0 0 3.53 1.25h9.88a5 5 0 0 0 3.53-1.25 4.73 4.73 0 0 0 1.4-3.54V7.02a5 5 0 0 0-1.3-3.49 4.82 4.82 0 0 0-3.54-1.3zM12 5.76c3.39 0 6.2 2.8 6.2 6.2a6.2 6.2 0 0 1-12.4 0 6.2 6.2 0 0 1 6.2-6.2zm0 2.22a3.99 3.99 0 0 0-3.97 3.97A3.99 3.99 0 0 0 12 15.92a3.99 3.99 0 0 0 3.97-3.97A3.99 3.99 0 0 0 12 7.98zm6.44-3.77a1.4 1.4 0 1 1 0 2.8 1.4 1.4 0 0 1 0-2.8z">
+                            </path>
+                        </svg></a>
+                    <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                            class="icon-social-youtube" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12.04 3.5c.59 0 7.54.02 9.34.5a3.02 3.02 0 0 1 2.12 2.15C24 8.05 24 12 24 12v.04c0 .43-.03 4.03-.5 5.8A3.02 3.02 0 0 1 21.38 20c-1.76.48-8.45.5-9.3.51h-.17c-.85 0-7.54-.03-9.29-.5A3.02 3.02 0 0 1 .5 17.84c-.42-1.61-.49-4.7-.5-5.6v-.5c.01-.9.08-3.99.5-5.6a3.02 3.02 0 0 1 2.12-2.14c1.8-.49 8.75-.51 9.34-.51zM9.54 8.4v7.18L15.82 12 9.54 8.41z">
+                            </path>
+                        </svg></a>
+                </div>
+                <button class="adc">
+                    <div class="oneside"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                            class="svg-icon-map-marker " viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+
+                            <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+
+                        </svg>Address </div><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                        class="svg-icon-chevron-down " viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+
+                        <path d="M6 9l6 6 6-6"></path>
+
+                    </svg>
+                </button>
+                <button class="adc">
+                    <div class="oneside"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                            class="svg-icon-mail " viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+
+                        </svg>Drop us an email </div><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                        class="svg-icon-chevron-down " viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+
+                        <path d="M6 9l6 6 6-6"></path>
+
+                    </svg>
+                </button>
+                <button class="adc">
+                    <div class="oneside"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                            class="svg-icon-phone " viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+
+                        </svg> Call us</div> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                        class="svg-icon-chevron-down " viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+
+                        <path d="M6 9l6 6 6-6"></path>
+
+                    </svg>
+                </button>
+            </div>
+            <div id="fr">
+                <h4>Customer Login</h4>
+                <p>Sign in to view your orders, update your profile, and manage your account easily.</p>
+                <a id="fra" href="{% url 'login' %}"><svg width="20" height="20" viewBox="0 0 27 27" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M22.9129 12.935L13.7571 23.0474C13.5348 23.2929 13.1284 23.1084 13.1669 22.7794L14.0816 14.9731H10.6991C10.4034 14.9731 10.2484 14.6219 10.4478 14.4035L20.3133 3.59739C20.5589 3.32834 20.9984 3.58134 20.8891 3.92887L18.2354 12.3664H22.6607C22.9557 12.3664 23.1109 12.7163 22.9129 12.935Z"
+                            fill="#ffffff"></path>
+                    </svg>Login</a>
+                <div id="frb">
+                    <div id="frbl">
+                        <h3>Policies</h3>
+                        <a href="{% url 'privacy' %}">Privacy Policy</a>
+                        <a href="">Refund Policy</a>
+                        <a href="">Shipping Policy</a>
+                        <a href="">Terms of Service</a>
+                    </div>
+                    <div id="frbr">
+                        <h3>Quick Links</h3>
+                        <a href="{% url 'first' %}">Home</a>
+                        <a href="{% url 'about' %}">About Us</a>
+                        <a href="">Contact Us</a>
+                        <a href="">Status/Track Order</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="slast">
+            <div id="slastline">
+                <div class="bottum"></div>
+                <div class="bottum">© 2026 The Perfume Project.</div>
+                <div class="bottum"><button onclick="scrollDiv()"><svg xmlns="http://www.w3.org/2000/svg" width="25"
+                            id="buttonsvg" height="25" fill="currentColor" class="bi bi-arrow-up-short"
+                            viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5" />
+                        </svg>Back to top</button></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const shopall = document.getElementById('shopalls')
+        const total = document.getElementById('total')
+        const minis = document.getElementById('mainmini')
+        let isOn = false
+
+        total.style.transition = '1.3s'
+
+        function minicombos() {
+            if (!isOn) {
+                minis.style.display = 'block'
+                shopall.style.display = 'none'
+                total.style.filter = 'blur(5px)'
+                isOn = true
+            } else {
+                minis.style.display = 'none'
+                total.style.filter = 'blur(0px)'
+                isOn = false
+            }
+        }
+        function scrollDiv() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        }
+
+    </script>
+</body>
+
+</html>

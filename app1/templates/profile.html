@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+New Arrivals
+{% endblock title %}
+
+{% block content %}
+<div class="ecommerce-profile-container">
+    <div class="profile-sidebar">
+        <div class="user-info">
+            {% if user.profile.profile_picture %}
+            <img src="{{ user.profile.profile_picture.url }}" alt="Profile">
+            {% else %}
+            <img src="/static/default.png" alt="Default profile">
+            {% endif %}
+            <h3>{{ profile.user }}</h3>
+        </div>
+        <nav class="profile-nav">
+            <a href="{% url 'order_list' %}" class="active">My Orders</a>
+            <a href="{% url 'wishlist_page' %}" class="fas"> Wishlist</a>
+            <a href="{% url 'profile_form' %}" class="fas">editing profile</a>
+            <a href="{% url 'logout' %}" class="logout-link">Logout</a>
+        </nav>
+    </div>
+</div>
+{% endblock content %}
